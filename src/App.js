@@ -1,14 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
 import {
   BrowserRouter as Router,
   Switch, 
   Route,
-  Link
+  Link,
+  Redirect
 } from 'react-router-dom';
 import { useRef, useState } from 'react';
-//Comments need to be added here or something?
-
 
 function NumberDisplayPage(props){
   return (<div className="number-output-container">
@@ -18,6 +16,8 @@ function NumberDisplayPage(props){
 
 function NumberInputPage(props){
   const inputRef = useRef()
+  const [doRedirect, setDoRedirect] = useState(false);
+
   const addNumber = (e)=>{
     if(inputRef.current){
       let newNumbers = [...props.numbers];
@@ -25,14 +25,20 @@ function NumberInputPage(props){
       
       newNumbers.push(inputNumber);
       props.setNumbers(newNumbers);
+      setDoRedirect(true);
     }
   }
-
-  return (<form className="number-input-form">
+  const normal_html = (<form className="number-input-form">
       <label htmlFor="numbers">Input a number:</label>
       <input ref={inputRef} name="numbers" type="text" placeholder="123" />
       <button type="button" onClick={addNumber}>Submit Number!</button>
-    </form>)
+    </form>);
+
+  if(doRedirect){
+    return <Redirect to="/display"></Redirect>
+  }else{
+    return normal_html;
+  }
 }
 
 function NavBar(){
