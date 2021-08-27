@@ -1,0 +1,39 @@
+body{
+  font-size: 2em;
+}
+
+.number-output-container{
+  width: 80%;
+  margin:auto;
+}
+
+form.number-input-form{
+  width: 80%;
+  margin: auto;
+  display:grid;
+  grid-template-columns: min-content auto;
+  justify-items: center;
+  align-items: center;
+  grid-template-areas: 
+  "label input"
+  "button button";
+}
+
+form.number-input-form > label{
+  grid-area: label;
+}
+
+form.number-input-form > input{
+  grid-area: input;
+}
+
+form.number-input-form > button{
+  grid-area: button;
+}
+
+nav.main-navigation{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
