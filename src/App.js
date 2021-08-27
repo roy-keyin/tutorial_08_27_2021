@@ -7,6 +7,8 @@ import {
   Link
 } from 'react-router-dom';
 import { useRef, useState } from 'react';
+//Comments need to be added here or something?
+
 
 function NumberDisplayPage(props){
   return (<div className="number-output-container">
